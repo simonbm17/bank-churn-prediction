@@ -1,0 +1,17 @@
+# Analisis y manipulacion de datos
+pandas
+numpy
+
+# Visualizacion
+matplotlib
+seaborn
+
+# Modelado
+scikit-learn
+xgboost
+lightgbm
+catboost
+statsmodels
+
+# Entorno de notebooks
+jupyter

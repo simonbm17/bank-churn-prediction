@@ -28,13 +28,26 @@ La variable objetivo es `Exited` (si el cliente abandonó o no). Un desafío cen
 │   ├── 2_GradientBoosting_Optimizacion.ipynb  # Avance 2: modelos avanzados
 │   └── 3_AprendizajeNoSupervisado.ipynb     # Avance 3: segmentación
 ├── data/
-│   └── Churn_Modelling.csv                   # Dataset original
-├── reporte/
-│   └── Reporte_Modelos.pdf                   # Reporte de negocio consolidado
+│   ├── Churn_Modelling.csv                   # Dataset original
+│   └── churn_transformado.csv                # Generado por el Avance 1
+├── docs/
+│   └── Reporte_Modelos.pdf                   # Reporte de modelos en PDF
+├── requirements.txt
 └── README.md
 ```
 
-Los notebooks están encadenados: el Avance 1 limpia y codifica los datos y los exporta, y los avances 2 y 3 los cargan. Se recomienda ejecutarlos en orden.
+Los notebooks están encadenados: el Avance 1 limpia y codifica los datos y los exporta a `data/churn_transformado.csv`, y los avances 2 y 3 los cargan desde ahí. Se recomienda ejecutarlos en orden.
+
+## Cómo reproducirlo
+
+```bash
+git clone https://github.com/simonbm17/bank-churn-prediction.git
+cd bank-churn-prediction
+pip install -r requirements.txt
+jupyter notebook
+```
+
+Ejecutar los notebooks de la carpeta `notebooks/` en orden: 1, 2 y 3.
 
 ## Metodología y resultados
 
@@ -63,11 +76,11 @@ Se entrenaron cuatro modelos basados en árboles, cubriendo las dos estrategias 
 | Modelo | ROC-AUC | Recall |
 |--------|---------|--------|
 | Regresión Logística (base) | 0,777 | 0,70 |
-| Random Forest | 0,864 | 0,68 |
-| LightGBM | 0,856 | 0,71 |
+| Random Forest | 0,864 | 0,73 |
+| LightGBM | 0,858 | 0,70 |
 | CatBoost | 0,866 | 0,74 |
 | XGBoost optimizado | 0,870 | 0,76 |
-| Stacking | 0,870 | 0,76 |
+| Stacking | 0,870 | 0,77 |
 
 El XGBoost optimizado y el Stacking empataron en rendimiento. Se seleccionó el **XGBoost** como modelo final: entrega el mismo resultado con menor complejidad, menor costo computacional y mayor facilidad de mantenimiento. La complejidad adicional del Stacking no aportó mejoras, ya que combina modelos de boosting demasiado similares entre sí. El análisis de importancia de variables confirmó que los árboles aprovechan el efecto no lineal del número de productos que la regresión logística no capturaba.
 
