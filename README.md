@@ -163,7 +163,7 @@ Los notebooks están encadenados: el primero limpia y codifica los datos y los e
 ## Cómo reproducirlo
 
 ```bash
-git clone https://github.com/simonbm17/bank-churn-prediction.git
+git clone https://github.com/SimonBedoyaMontiel/bank-churn-prediction.git
 cd bank-churn-prediction
 pip install -r requirements.txt
 jupyter notebook
